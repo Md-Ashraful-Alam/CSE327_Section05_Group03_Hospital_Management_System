@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Index &#8212; BloodDonate Table 1.0.0 documentation</title>
+    <title>Index &#8212; User Table 1.0.0 documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
@@ -45,21 +45,22 @@
     module
 
       <ul>
-        <li><a href="rst/Models.html#module-Models">Blood Donate</a>
+        <li><a href="rst/Models.html#module-Models">User</a>
 		
 	
 </li>
   <li>
       <ul>
          <p>        
-		   
-		class BloodDonate(models.Model):<br>
-		patient_id = models.CharField(max_length=10)<br>
-		user_id = models.CharField(max_length=10)<br>
-		blood_group = models.CharField(max_length=5)<br>
-		contact_num = models.CharField(max_length=11)<br>
-		location = models.CharField(max_length=20)<br>
-		need_date = models.DateField()<br>
+
+		class User(models.Model):<br>
+		user_id = models.IntegerField(primary_key=True)<br>
+		user_name = models.CharField(max_length=45)<br>
+		address = models.CharField(max_length=45)<br>
+		blood_group = models.CharField(max_length=3)<br>
+		age = models.CharField(max_length=3)<br>
+		email = models.CharField(max_length=30)<br>
+		user_type = models.CharField(max_length=10)<br>
 				
 		</p>
 			
@@ -73,7 +74,7 @@
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-<h1 class="logo"><a href="index.html">BloodDonate Table</a></h1>
+<h1 class="logo"><a href="index.html">Uaer Table</a></h1>
 
 
 
@@ -114,7 +115,7 @@
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      &copy;2021, Nujhat Nower .
+      &copy;2021, Maria Amreen.
       
       |
       Powered by <a href="http://sphinx-doc.org/">Sphinx 4.3.0</a>

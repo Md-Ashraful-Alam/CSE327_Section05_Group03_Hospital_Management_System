@@ -1,9 +1,9 @@
-.. OrganDonate Table documentation master file, created by
+.. User Table documentation master file, created by
    sphinx-quickstart on Thu Dec 30 09:30:05 2021.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to OrganDonate's documentation!
+Welcome to User's documentation!
 =============================================
 
 .. toctree::

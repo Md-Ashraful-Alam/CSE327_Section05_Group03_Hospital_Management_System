@@ -18,9 +18,9 @@ sys.path.append('source')
 
 # -- Project information -----------------------------------------------------
 
-project = 'BloodDonate Table'
-copyright = '2021, Nuzhat Nower'
-author = 'Nuzhat Nower'
+project = 'User Table'
+copyright = '2021, Maria Amreen'
+author = 'Maria Amreen'
 
 # The full version, including alpha/beta/rc tags
 release = '1.0.0'

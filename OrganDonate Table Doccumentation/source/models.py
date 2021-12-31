@@ -5,7 +5,7 @@ from djnago.contrib.auth.models import U
 
 
 
-class BloodDonate(models.Model):
+class OrganDonate(models.Model):
     patient_id = models.CharField(max_length=10)
     user_id = models.CharField(max_length=10)
     blood_group = models.CharField(max_length=5)
