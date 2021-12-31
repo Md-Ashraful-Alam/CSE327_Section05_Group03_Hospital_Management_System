@@ -1,2 +1,0 @@
-# CSE327_Section05_Group03_Hospital_Management_System
-
