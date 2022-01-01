@@ -147,3 +147,5 @@ def delete_story(request, patient_id):
 
 
 
+
+    
