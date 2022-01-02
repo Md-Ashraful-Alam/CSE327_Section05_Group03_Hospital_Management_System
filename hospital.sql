@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 31, 2021 at 01:23 PM
+-- Generation Time: Jan 02, 2022 at 05:08 AM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 8.0.3
 
@@ -24,7 +24,32 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `appointment`
+--
 
+CREATE TABLE `appointment` (
+  `Appointment_Id` varchar(15) NOT NULL,
+  `patient_id` varchar(10) NOT NULL,
+  `doctor_id` varchar(10) NOT NULL,
+  `Appointment_Date` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `appointment`
+--
+
+INSERT INTO `appointment` (`Appointment_Id`, `patient_id`, `doctor_id`, `Appointment_Date`) VALUES
+('145', '312', '34', '2021-04-03 00:00:00'),
+('A116', '110', '112', '2019-08-13 10:07:02'),
+('A119', '300', '500', '2017-10-24 12:27:06'),
+('A202', '400', '112', '2015-12-06 15:04:02'),
+('A210', '212', '319', '2018-05-30 12:30:10'),
+('A215', '115', '210', '2019-07-15 14:48:02'),
+('A216', '123', '215', '2015-08-15 17:38:38'),
+('A236', '111', '800', '2012-11-15 12:50:48'),
+('A326', '456', '555', '2017-12-20 18:10:59');
+
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `auth_group`
@@ -185,6 +210,51 @@ CREATE TABLE `auth_user_user_permissions` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `bed`
+--
+
+CREATE TABLE `bed` (
+  `bed_id` varchar(30) NOT NULL,
+  `Bed_Type` varchar(15) NOT NULL,
+  `Vacancy` enum('Y','N') NOT NULL,
+  `Bed_Charge` mediumint(9) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `bed`
+--
+
+INSERT INTO `bed` (`bed_id`, `Bed_Type`, `Vacancy`, `Bed_Charge`) VALUES
+('1150', 'Ward', 'N', 2300),
+('1236', 'ICU', 'N', 7000),
+('134', 'ICU', 'N', 15000),
+('1504', 'WARD', 'N', 2000),
+('2500', 'ICU', 'N', 7000),
+('53', 'Ward', 'N', 2500),
+('8455', 'Cabin', 'N', 4000),
+('8536', 'Cabin', 'N', 3000);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `blood_donate`
+--
+
+CREATE TABLE `blood_donate` (
+  `patient_id` varchar(10) NOT NULL,
+  `user_id` varchar(10) NOT NULL,
+  `blood_group` varchar(5) NOT NULL,
+  `contact_num` varchar(11) DEFAULT NULL,
+  `location` varchar(20) DEFAULT NULL,
+  `need_date` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `blood_donate`
+--
+
+INSERT INTO `blood_donate` (`patient_id`, `user_id`, `blood_group`, `contact_num`, `location`, `need_date`) VALUES
+('123', '234', 'AB+', '01798345690', 'Lalbag', '2021-04-06');
 
 -- --------------------------------------------------------
 
@@ -293,6 +363,126 @@ CREATE TABLE `django_session` (
 
 -- --------------------------------------------------------
 
+--
+-- Table structure for table `doctor`
+--
+
+CREATE TABLE `doctor` (
+  `Doctorid` varchar(6) NOT NULL,
+  `user_id` varchar(10) NOT NULL,
+  `Doctor_Name` varchar(15) NOT NULL,
+  `contact_num` varchar(11) NOT NULL,
+  `email` varchar(30) NOT NULL,
+  `meet_link` varchar(40) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `doctor`
+--
+
+INSERT INTO `doctor` (`Doctorid`, `user_id`, `Doctor_Name`, `contact_num`, `email`, `meet_link`) VALUES
+('106', '110', 'Soniya Jaman', '01723455678', 'sonia@gmail.com', 'fjahfhwogow'),
+('126', '456', 'Robert Adler', '01723455655', 'robert@gmail.com', 'vdaifhwogwog3'),
+('145', '233', 'Arfaqur Rahman', '0172345533', 'arfaqur', 'bfwihwoggphhp'),
+('215', '676', 'Rakesh Khan', '01723455444', 'rakesh@gmail.com', 'qifhoghogh3h'),
+('256', '111', 'Shariar Mim', '01723455333', 'mim@gmail.com', 'fwifhwogj3phjp'),
+('435', '123', 'piyash', '01734567345', 'piyash@gmail.com', 'dfwghju6k6k');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `hello_user1`
+--
+
+CREATE TABLE `hello_user1` (
+  `id` bigint(20) NOT NULL,
+  `username` varchar(30) NOT NULL,
+  `fname` varchar(30) NOT NULL,
+  `lname` varchar(30) NOT NULL,
+  `password` varchar(30) NOT NULL,
+  `repassword` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `medicine`
+--
+
+CREATE TABLE `medicine` (
+  `Medicine Id` varchar(15) NOT NULL,
+  `Medicine Name` varchar(20) NOT NULL,
+  `patient_id` varchar(10) NOT NULL,
+  `Expired Date` datetime NOT NULL,
+  `Price` smallint(6) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `medicine`
+--
+
+INSERT INTO `medicine` (`Medicine Id`, `Medicine Name`, `patient_id`, `Expired Date`, `Price`) VALUES
+('1', 'Ampicillin', '121', '2025-02-12 12:10:11', 30),
+('2', 'Didanosine', '210', '2025-03-22 11:19:13', 20),
+('3', 'Furosemide', '310', '2030-11-20 11:19:13', 45),
+('4', 'Linezolid', '114', '2022-04-14 11:19:13', 22),
+('45', 'Moxacil', '456', '2024-05-06 00:00:00', 60),
+('5', 'Melphalan', '455', '2029-09-17 12:22:24', 10),
+('6', 'Melphalan', '232', '2029-11-17 11:22:21', 75);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `nurse`
+--
+
+CREATE TABLE `nurse` (
+  `Nurse_ID` varchar(6) NOT NULL,
+  `Nurse_Name` varchar(15) NOT NULL,
+  `Floor_No` tinyint(4) NOT NULL,
+  `Bed_No` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `nurse`
+--
+
+INSERT INTO `nurse` (`Nurse_ID`, `Nurse_Name`, `Floor_No`, `Bed_No`) VALUES
+('234', 'Arju', 127, ''),
+('320', 'Shetu', 1, '1150'),
+('400', 'Diya', 1, '1236'),
+('500', 'Tahira', 1, '1504'),
+('515', 'Shornali', 9, '2500'),
+('610', 'Atia', 1, '53'),
+('630', 'Khadija', 8, '8455'),
+('660', 'Nabila', 8, '8536'),
+('700', 'Prity', 9, '9050');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `organ_donate`
+--
+
+CREATE TABLE `organ_donate` (
+  `patient_id` varchar(10) NOT NULL,
+  `user_id` varchar(10) NOT NULL,
+  `blood_group` varchar(5) NOT NULL,
+  `contact_num` varchar(11) DEFAULT NULL,
+  `location` varchar(20) DEFAULT NULL,
+  `need_date` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `organ_donate`
+--
+
+INSERT INTO `organ_donate` (`patient_id`, `user_id`, `blood_group`, `contact_num`, `location`, `need_date`) VALUES
+('345', '123', 'B+', '01956784545', 'Kalabagan', '2018-02-03');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `patient`
 --
 
@@ -339,7 +529,67 @@ INSERT INTO `story` (`patient_id`, `story_date`, `comment`) VALUES
 
 -- --------------------------------------------------------
 
+--
+-- Table structure for table `test`
+--
+
+CREATE TABLE `test` (
+  `Test_Id` varchar(6) NOT NULL,
+  `Patient_ID` varchar(5) NOT NULL,
+  `test_charge` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `test`
+--
+
+INSERT INTO `test` (`Test_Id`, `Patient_ID`, `test_charge`) VALUES
+('150', '100', 600),
+('155', '217', 500),
+('170', '1100', 5000),
+('180', '5320', 5000),
+('230', '8901', 5000),
+('250', '1123', 50000),
+('260', '9002', 7000),
+('280', '3120', 7000),
+('350', '1423', 5000),
+('450', '200', 1000),
+('560', '389', 1000),
+('650', '3621', 10000),
+('850', '459', 1200);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user`
+--
+
+CREATE TABLE `user` (
+  `user_id` int(7) NOT NULL,
+  `user_name` varchar(45) NOT NULL,
+  `address` varchar(45) NOT NULL,
+  `blood_group` varchar(3) NOT NULL,
+  `age` varchar(3) NOT NULL,
+  `email` varchar(30) NOT NULL,
+  `user_type` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`user_id`, `user_name`, `address`, `blood_group`, `age`, `email`, `user_type`) VALUES
+(234, 'Arfaqur', 'Lalbag', 'B+', '24', 'arfaqur@gmail.com', 'Patient');
+
+--
 -- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `appointment`
+--
+ALTER TABLE `appointment`
+  ADD PRIMARY KEY (`Appointment_Id`);
 
 --
 -- Indexes for table `auth_group`
@@ -386,7 +636,19 @@ ALTER TABLE `auth_user_user_permissions`
   ADD UNIQUE KEY `auth_user_user_permissions_user_id_permission_id_14a6b632_uniq` (`user_id`,`permission_id`),
   ADD KEY `auth_user_user_permi_permission_id_1fbb5f2c_fk_auth_perm` (`permission_id`);
 
+--
+-- Indexes for table `bed`
+--
+ALTER TABLE `bed`
+  ADD PRIMARY KEY (`bed_id`);
 
+--
+-- Indexes for table `blood_donate`
+--
+ALTER TABLE `blood_donate`
+  ADD PRIMARY KEY (`patient_id`);
+
+--
 -- Indexes for table `django_admin_log`
 --
 ALTER TABLE `django_admin_log`
@@ -414,13 +676,52 @@ ALTER TABLE `django_session`
   ADD PRIMARY KEY (`session_key`),
   ADD KEY `django_session_expire_date_a5c62663` (`expire_date`);
 
+--
+-- Indexes for table `doctor`
+--
+ALTER TABLE `doctor`
+  ADD PRIMARY KEY (`Doctorid`);
 
 --
-exes for table `patient`
+-- Indexes for table `hello_user1`
+--
+ALTER TABLE `hello_user1`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `medicine`
+--
+ALTER TABLE `medicine`
+  ADD PRIMARY KEY (`Medicine Id`);
+
+--
+-- Indexes for table `nurse`
+--
+ALTER TABLE `nurse`
+  ADD PRIMARY KEY (`Nurse_ID`),
+  ADD KEY `FK_nurse_bed` (`Bed_No`);
+
+--
+-- Indexes for table `organ_donate`
+--
+ALTER TABLE `organ_donate`
+  ADD PRIMARY KEY (`patient_id`);
+
+--
+-- Indexes for table `patient`
 --
 ALTER TABLE `patient`
   ADD PRIMARY KEY (`Patient_Id`);
 
+--
+-- Indexes for table `test`
+--
+ALTER TABLE `test`
+  ADD PRIMARY KEY (`Test_Id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
 
 --
 -- AUTO_INCREMENT for table `auth_group`
@@ -477,7 +778,12 @@ ALTER TABLE `django_migrations`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
+-- AUTO_INCREMENT for table `hello_user1`
+--
+ALTER TABLE `hello_user1`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
 
+--
 -- Constraints for dumped tables
 --
 
